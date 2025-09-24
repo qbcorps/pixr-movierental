@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BookRent — Rent, Read, Return</title>
+  <!-- Tailwind CDN for quick prototyping -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom colors + small tweaks to keep blue & white theme */
+    :root{
+      --brand-blue: #0b6efd; /* primary */
+      --brand-blue-dark: #084cba;
+      --muted: #6b7280;
+    }
+    .card-cover{
+      background: linear-gradient(135deg, rgba(11,110,253,0.08), rgba(11,110,253,0.02));
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800 antialiased">
+  <!-- Top nav -->
+  <header class="shadow-sm">
+    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-md bg-[var(--brand-blue)] flex items-center justify-center text-white font-bold">PXR</div>
+        <div>
+          <h1 class="text-xl font-semibold leading-tight">Pixr</h1>
+          <p class="text-sm text-[var(--muted)]">Rent movies. Watch offline.</p>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#featured" class="hover:text-[var(--brand-blue)]">Featured</a>
+        <a href="#categories" class="hover:text-[var(--brand-blue)]">Categories</a>
+        <a href="#how-it-works" class="hover:text-[var(--brand-blue)]">How it works</a>
+        <a href="#" class="px-4 py-2 border border-[var(--brand-blue)] text-[var(--brand-blue)] rounded-md">Sign in</a>
+      </nav>
+
+      <!-- mobile menu button -->
+      <div class="md:hidden">
+        <button aria-label="Open menu" class="p-2 rounded-md border">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-r from-[var(--brand-blue)]/10 to-white">
+    <div class="container mx-auto px-6 py-12 grid lg:grid-cols-2 gap-8 items-center">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-[var(--brand-blue-dark)]">Find the next movie you'll love — without breaking the bank</h2>
+        <p class="mt-4 text-lg text-[var(--muted)] max-w-xl">Flexible rental periods, curated collections, and easy returns. Browse bestsellers, movies, and indie picks.</p>
+
+        <form class="mt-6 flex gap-2 max-w-xl">
+          <input type="search" placeholder="Search movies, actors, directors..." class="flex-1 px-4 py-3 rounded-l-md border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[var(--brand-blue)]" />
+          <select class="px-3 py-3 border-t border-b border-r rounded-r-md">
+            <option>All categories</option>
+            <option>Action</option>
+            <option>Horror</option>
+            <option>Romance</option>
+          </select>
+          <button class="ml-2 px-4 py-3 bg-[var(--brand-blue)] text-white rounded-md">Search</button>
+        </form>
+
+        <div class="mt-6 flex gap-4 flex-wrap text-sm">
+          <span class="px-3 py-1 bg-white border rounded-full">Free 7-day trial</span>
+          <span class="px-3 py-1 bg-white border rounded-full">No late fees (selected)</span>
+          <span class="px-3 py-1 bg-white border rounded-full">Save offline</span>
+        </div>
+      </div>
+
+      <div class="order-first lg:order-last">
+        <!-- Mock visual of a featured book stack -->
+        <div class="relative mx-auto w-full max-w-md">
+          <div class="rounded-2xl shadow-lg p-6 bg-white">
+            <div class="flex items-center gap-4">
+              <div class="w-28 h-40 rounded-md card-cover flex items-center justify-center">
+                <svg width="48" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="3" y="3" width="18" height="18" rx="2" stroke="var(--brand-blue)" stroke-width="1.2"/>
+                  <path d="M7 7h10M7 11h10M7 15h6" stroke="var(--brand-blue)" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-lg">Weapons</h3>
+                <p class="text-[var(--muted)] text-sm">by Zack Creggor • Horror</p>
+                <div class="mt-3 flex items-center gap-3">
+                  <span class="text-2xl font-bold">₱99</span>
+                  <span class="text-sm text-[var(--muted)]">/ week</span>
+                </div>
+                <div class="mt-4">
+                  <button class="px-4 py-2 bg-[var(--brand-blue)] text-white rounded-md">Rent now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- decorative stacked cards -->
+          <div class="absolute -right-8 -bottom-6 rotate-3 w-36 h-48 rounded-lg card-cover shadow-md flex items-center justify-center">
+            <span class="text-xs">Popular</span>
+          </div>
+          <div class="absolute -left-6 -bottom-12 -rotate-6 w-32 h-44 rounded-lg card-cover shadow-sm flex items-center justify-center">
+            <span class="text-xs">New</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured grid -->
+  <section id="featured" class="container mx-auto px-6 py-10">
+    <div class="flex items-center justify-between">
+      <h3 class="text-2xl font-bold">Featured picks</h3>
+      <a href="#" class="text-sm text-[var(--brand-blue)]">See all</a>
+    </div>
+
+    <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+      <!-- sample card (repeat) -->
+      <!-- In Symfony/Twig you would loop over books and render similar card markup -->
+
+      <article class="bg-white border rounded-lg p-4 shadow-sm">
+        <div class="w-full h-44 rounded-md card-cover flex items-center justify-center overflow-hidden">
+          <!-- cover image goes here -->
+          <svg class="w-20 h-28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="3" width="18" height="18" rx="2" stroke="var(--brand-blue)" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <h4 class="mt-3 font-semibold">The Conjuring: Last Rites</h4>
+        <p class="text-sm text-[var(--muted)]">by Michael Chaves</p>
+        <div class="mt-3 flex items-center justify-between">
+          <div>
+            <span class="font-bold">₱99</span>
+            <span class="text-xs text-[var(--muted)]">/ week</span>
+          </div>
+          <button class="px-3 py-1 border rounded-md text-[var(--brand-blue)]">Rent</button>
+        </div>
+      </article>
+
+      <article class="bg-white border rounded-lg p-4 shadow-sm">
+        <div class="w-full h-44 rounded-md card-cover flex items-center justify-center overflow-hidden">
+          <svg class="w-20 h-28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="3" width="18" height="18" rx="2" stroke="var(--brand-blue)" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <h4 class="mt-3 font-semibold">Anaconda</h4>
+        <p class="text-sm text-[var(--muted)]">by Tom Gormican</p>
+        <div class="mt-3 flex items-center justify-between">
+          <div>
+            <span class="font-bold">₱99</span>
+            <span class="text-xs text-[var(--muted)]">/ week</span>
+          </div>
+          <button class="px-3 py-1 border rounded-md text-[var(--brand-blue)]">Rent</button>
+        </div>
+      </article>
+
+      <article class="bg-white border rounded-lg p-4 shadow-sm">
+        <div class="w-full h-44 rounded-md card-cover flex items-center justify-center overflow-hidden">
+          <svg class="w-20 h-28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="3" width="18" height="18" rx="2" stroke="var(--brand-blue)" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <h4 class="mt-3 font-semibold">Lilo & Stitch</h4>
+        <p class="text-sm text-[var(--muted)]">by Dean Fleischer Camp</p>
+        <div class="mt-3 flex items-center justify-between">
+          <div>
+            <span class="font-bold">₱99</span>
+            <span class="text-xs text-[var(--muted)]">/ week</span>
+          </div>
+          <button class="px-3 py-1 border rounded-md text-[var(--brand-blue)]">Rent</button>
+        </div>
+      </article>
+
+      <article class="bg-white border rounded-lg p-4 shadow-sm">
+        <div class="w-full h-44 rounded-md card-cover flex items-center justify-center overflow-hidden">
+          <svg class="w-20 h-28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="3" width="18" height="18" rx="2" stroke="var(--brand-blue)" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <h4 class="mt-3 font-semibold">One Battle After Another</h4>
+        <p class="text-sm text-[var(--muted)]">by Paul Thomas Anderson</p>
+        <div class="mt-3 flex items-center justify-between">
+          <div>
+            <span class="font-bold">₱99</span>
+            <span class="text-xs text-[var(--muted)]">/ week</span>
+          </div>
+          <button class="px-3 py-1 border rounded-md text-[var(--brand-blue)]">Rent</button>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section id="categories" class="bg-[var(--brand-blue)]/8 py-10">
+    <div class="container mx-auto px-6">
+      <h3 class="text-2xl font-bold">Browse by category</h3>
+      <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div class="p-4 bg-white rounded-lg shadow-sm">
+          <h4 class="font-semibold">Comedy</h4>
+          <p class="text-sm text-[var(--muted)] mt-1">Funny, for laughs</p>
+        </div>
+        <div class="p-4 bg-white rounded-lg shadow-sm">
+          <h4 class="font-semibold">Action</h4>
+          <p class="text-sm text-[var(--muted)] mt-1">Fights, strategies</p>
+        </div>
+        <div class="p-4 bg-white rounded-lg shadow-sm">
+          <h4 class="font-semibold">Horror</h4>
+          <p class="text-sm text-[var(--muted)] mt-1">Thrillers, mystery</p>
+        </div>
+        <div class="p-4 bg-white rounded-lg shadow-sm">
+          <h4 class="font-semibold">Romance</h4>
+          <p class="text-sm text-[var(--muted)] mt-1">Sweet, drama</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how-it-works" class="container mx-auto px-6 py-10">
+    <h3 class="text-2xl font-bold">How it works</h3>
+    <div class="mt-6 grid md:grid-cols-3 gap-6">
+      <div class="p-6 bg-white border rounded-lg">
+        <h4 class="font-semibold">1. Browse & choose</h4>
+        <p class="text-sm text-[var(--muted)] mt-2">Search by title, director or category and pick the rental plan that fits you.</p>
+      </div>
+      <div class="p-6 bg-white border rounded-lg">
+        <h4 class="font-semibold">2. Rent & watch</h4>
+        <p class="text-sm text-[var(--muted)] mt-2">Watch the movie online or save it offline.</p>
+      </div>
+      <div class="p-6 bg-white border rounded-lg">
+        <h4 class="font-semibold">3. Return or renew</h4>
+        <p class="text-sm text-[var(--muted)] mt-2">Return after your rental period or renew if you need more time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-50 border-t mt-10">
+    <div class="container mx-auto px-6 py-10 grid md:grid-cols-3 gap-6">
+      <div>
+        <h5 class="font-bold">Pixr</h5>
+        <p class="text-sm text-[var(--muted)] mt-2">Affordable movie rentals for the people.</p>
+      </div>
+      <div>
+        <h5 class="font-semibold">Company</h5>
+        <ul class="mt-2 text-sm text-[var(--muted)] space-y-2">
+          <li>About</li>
+          <li>Careers</li>
+          <li>Contact</li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-semibold">Support</h5>
+        <ul class="mt-2 text-sm text-[var(--muted)] space-y-2">
+          <li>Help center</li>
+          <li>Terms</li>
+          <li>Privacy</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t py-4 text-center text-sm text-[var(--muted)]">© 2025 Pixr — All rights reserved</div>
+  </footer>
+
+</body>
+</html>
